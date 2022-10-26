@@ -34,7 +34,8 @@ public class AppUserAuthorizationFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
         // check if this is not login path
-        if(request.getServletPath().equals("/api/login")){
+        if(request.getServletPath().equals("/api/login")
+                || request.getServletPath().equals("/api/token/refresh")){
             filterChain.doFilter(request,response);
         }else {/* else : check if this has an authorization and then set the user as the logged*/
 

@@ -41,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         // everyone allows to be able to access this application
-        http.authorizeRequests().antMatchers("/api/login/**").permitAll();
+        http.authorizeRequests().antMatchers("/api/login/**","/api/token/refresh/**").permitAll();
 
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/user/**")
                 .hasAnyAuthority("ROLE_USER");
